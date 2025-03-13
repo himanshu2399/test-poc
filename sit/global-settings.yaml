@@ -2,5 +2,5 @@ global:
   environment: production
   logging: verbose
   feature_flags:
-    new_ui: true
-    beta_mode: false
+    new_ui: false
+    beta_mode: true
