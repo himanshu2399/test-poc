@@ -6,28 +6,29 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Check Changes') {
+        stage('Check Changes in Specific Folder') {
             steps {
                 script {
                     def changedFiles = sh(script: "git diff --name-only HEAD~1 HEAD", returnStdout: true).trim()
                     echo "Changed files: ${changedFiles}"
 
-                    // Only proceed if changes are inside 'environments/dev/app-config/'
-                    if (!changedFiles.split("\n").find { it.startsWith("environments/dev/app-config/") }) {
-                        echo "No relevant changes detected in environments/dev/app-config/. Skipping build."
-                        error("No relevant changes detected")
-                    } else {
+                    if (changedFiles.split('\n').any { it.startsWith('environments/dev/app-config/') }) {
                         echo "Relevant changes detected! Proceeding with the build."
+                    } else {
+                        echo "No relevant changes detected. Skipping build."
+                        error("No relevant changes in monitored folder.")
                     }
                 }
             }
         }
-
         stage('Run Build') {
+            when {
+                not {
+                    triggeredBy 'UpstreamCause'
+                }
+            }
             steps {
-                echo "Building the application..."
-                // Your build commands here
+                echo 'Building the application...'
             }
         }
     }
