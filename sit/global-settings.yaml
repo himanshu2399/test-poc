@@ -3,4 +3,4 @@ global:
   logging: verbose
   feature_flags:
     new_ui: true
-    beta_mode: false
+    beta_mode: true
