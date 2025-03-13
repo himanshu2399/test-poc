@@ -1,11 +1,11 @@
 app:
   name: "sample-app"
   version: "1.0.2" #updated the version
-  environment: "dev1"
+  environment: "dev2"
 
 database:
   host: "db-dev.example.com"
-  port: 3389
+  port: 3789
   username: "devuser"
   password: "devpassword"
 
