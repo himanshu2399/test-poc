@@ -9,6 +9,17 @@ pipeline {
                 }
             }
         }
+        stage('Check Folder Changes') {
+            steps {
+                script {
+                    if (!hasChanges('environments/dev/app-config') && !hasChanges('sit/global-settings.yaml')) {
+                        echo "No relevant changes detected. Skipping pipeline."
+                        currentBuild.result = 'SUCCESS'
+                        error("Stopping build as no relevant changes found")
+                    }
+                }
+            }
+        }
         stage('CS Helm Charts Dev') {
             when {
                 expression {
