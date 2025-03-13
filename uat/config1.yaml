@@ -1,0 +1,19 @@
+app:
+  name: "sample-app2"
+  version: "1.0.4" #updated the version
+  environment: "dev2"
+  id: "test-id"
+
+database:
+  host: "db-dev.example.com"
+  port: 3789
+  username: "devuser"
+  password: "devpassword"
+
+logging:
+  level: "DEBUG"
+  format: "json"
+
+feature_flags:
+  enable_new_ui: false
+  enable_beta_features: false
