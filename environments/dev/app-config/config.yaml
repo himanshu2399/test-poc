@@ -1,5 +1,5 @@
 app:
-  name: "sample-app"
+  name: "sample-app1"
   version: "1.0.2" #updated the version
   environment: "dev2"
 
