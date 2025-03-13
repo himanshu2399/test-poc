@@ -17,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Running stages for 'environments/dev/app-config...'
+                echo 'Running stages for environments/dev/app-config...'
                 // Add your pipeline steps here
                 sh "ls -la"
             }
@@ -29,7 +29,7 @@ pipeline {
               }
             }
             steps {
-                echo 'Running stages forsit/global-settings.yaml...'
+                echo 'Running stages for sit/global-settings.yaml...'
                 // Add your pipeline steps here
                 sh "pwd"
  
