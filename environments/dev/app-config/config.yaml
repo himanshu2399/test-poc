@@ -14,5 +14,5 @@ logging:
   format: "json"
 
 feature_flags:
-  enable_new_ui: true
+  enable_new_ui: false
   enable_beta_features: false
