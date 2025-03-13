@@ -16,7 +16,7 @@ pipeline {
 
         stage('Dev') {
             when {
-                expression { hasChanges('dev/') }
+                expression { hasChanges('dev') }
             }
             steps {
                 echo 'Running stages for Dev...'
@@ -26,7 +26,7 @@ pipeline {
 
         stage('SIT') {
             when {
-                expression { hasChanges('sit/') }
+                expression { hasChanges('sit') }
             }
             steps {
                 echo 'Running stages for SIT...'
@@ -36,7 +36,7 @@ pipeline {
 
         stage('UAT') {
             when {
-                expression { hasChanges('uat/') }
+                expression { hasChanges('uat') }
             }
             steps {
                 echo 'Running stages for UAT...'
