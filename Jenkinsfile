@@ -12,7 +12,7 @@ pipeline {
         stage('Check Folder Changes') {
             steps {
                 script {
-                    if (!hasChanges('environments/dev/app-config') && !hasChanges('sit/global-settings.yaml')) {
+                    if (!hasChanges('dev/') && !hasChanges('sit/')) {
                         echo "No relevant changes detected. Skipping pipeline."
                         currentBuild.result = 'SUCCESS'
                         error("Stopping build as no relevant changes found")
