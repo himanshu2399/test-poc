@@ -9,37 +9,39 @@ pipeline {
                 }
             }
         }
-        stage('Check Folder Changes') {
-            steps {
-                script {
-                    if (!hasChanges('dev/') && !hasChanges('sit/')) {
-                        echo "No relevant changes detected. Skipping pipeline."
-                        currentBuild.result = 'SUCCESS'
-                        error("Stopping build as no relevant changes found")
-                    }
-                }
-            }
-        }
-        stage('CS Helm Charts Dev') {
+
+        stage(' Dev') {
             when {
                 expression {
-                    return hasChanges('environments/dev/app-config')
+                    return hasChanges('dev/')
                 }
             }
             steps {
-                echo 'Running stages for environments/dev/app-config...'
+                echo 'Running stages for dev...'
                 sh "ls -la"
             }
         }
-        stage('Admin Helm Charts SIT') {
+        
+        stage('SIT') {
             when {
                 expression {
-                    return hasChanges('sit/global-settings.yaml')
+                    return hasChanges('sit/')
                 }
             }
             steps {
-                echo 'Running stages for sit/global-settings.yaml...'
-                sh "pwd"
+                echo 'Running stages for SIT...'
+                sh "ls -la"
+            }
+        }
+     stage('UAT') {
+            when {
+                expression {
+                    return hasChanges('uat/')
+                }
+            }
+            steps {
+                echo 'Running stages for UAT...'
+                sh "ls -la"
             }
         }
     }
