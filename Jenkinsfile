@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        githubPush()  // Automatically trigger on GitHub push event
+    }
     stages {
         stage('Checkout SCM') {
             steps {
@@ -22,11 +25,6 @@ pipeline {
             }
         }
         stage('Run Build') {
-            when {
-                not {
-                    triggeredBy 'UpstreamCause'
-                }
-            }
             steps {
                 echo 'Building the application...'
             }
