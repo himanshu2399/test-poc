@@ -1,0 +1,6 @@
+global:
+  environment: production
+  logging: verbose
+  feature_flags:
+    new_ui: true
+    beta_mode: false
