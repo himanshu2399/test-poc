@@ -42,7 +42,7 @@ pipeline {
                 expression { hasChanges('sit') }
             }
             steps {
-                echo 'Running stages for SIT..."
+                echo 'Running stages for SIT...
                 sh "ls -la"
             }
         }
