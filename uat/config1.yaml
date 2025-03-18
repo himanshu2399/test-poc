@@ -6,8 +6,8 @@ app:
 database:
   host: "db-dev.example.com"
   port: 5432
-  username: "devuser"
-  password: "devpassword"
+  username: "devuser1"
+  password: "devpassword1"
 
 logging:
   level: "DEBUG"
