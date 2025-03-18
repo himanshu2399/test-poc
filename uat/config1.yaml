@@ -5,7 +5,7 @@ app:
 
 database:
   host: "db-dev.example.com"
-  port: 3789
+  port: 5432
   username: "devuser"
   password: "devpassword"
 
