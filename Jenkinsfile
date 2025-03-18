@@ -47,8 +47,9 @@ pipeline {
 }
 
 def hasChanges(String path) {
-    def changedFiles = env.CHANGED_FILES?.trim()
-
+    def changedFiles = sh(returnStdout: true, script: "git diff --name-only HEAD~1").trim()
+    return changedFiles.split('\n').any { it.startsWith(path) }
+}
     if (changedFiles) {
         // Webhook provides file changes directly
         return changedFiles.tokenize(',').any { it.startsWith(path) }
