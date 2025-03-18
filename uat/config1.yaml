@@ -1,7 +1,7 @@
 app:
   name: "sample-app4"
   version: "1.0.4" #updated the version
-  environment: "dev3"
+  environment: "dev1"
 
 database:
   host: "db-dev.example.com"
