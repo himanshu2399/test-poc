@@ -1,9 +1,13 @@
-name: Trigger Jenkins Build
+name: Trigger Jenkins
+
 on:
   push:
     paths:
       - 'dev/**'
       - 'sit/**'
+    branches:
+      - main
+      - develop
 jobs:
   trigger:
     runs-on: ubuntu-latest
