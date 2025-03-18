@@ -2,6 +2,6 @@ global:
   environment: production-settings
   logging: error
   feature_flags:
-    new_ui: true
+    new_ui: false
     beta_mode: false
     
