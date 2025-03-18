@@ -1,6 +1,6 @@
 app:
   name: "sample-app1"
-  version: "1.0.2" #updated the version
+  version: "1.0.4" #updated the version
   environment: "dev4"
   id: "test-id"
 
