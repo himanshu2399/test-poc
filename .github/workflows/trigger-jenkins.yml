@@ -1,0 +1,13 @@
+name: Trigger Jenkins Build
+on:
+  push:
+    paths:
+      - 'dev/**'
+      - 'sit/**'
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins
+        run: |
+          curl -X POST http://34.72.171.177:8080/generic-webhook-trigger/invoke
