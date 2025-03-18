@@ -47,17 +47,14 @@ pipeline {
 }
 
 def hasChanges(String path) {
-    def changedFiles = sh(returnStdout: true, script: "git diff --name-only HEAD~1").trim()
-    return changedFiles.split('\n').any { it.startsWith(path) }
-}
-    if (changedFiles) {
-        // Webhook provides file changes directly
-        return changedFiles.tokenize(',').any { it.startsWith(path) }
-    } else {
+    def changedFiles = env.CHANGED_FILES ?: sh(returnStdout: true, script: "git diff --name-only HEAD~1").trim()
+
+    if (!changedFiles) {
         // Fallback to git diff if webhook data is missing
         def commit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         def previousCommit = env.GIT_PREVIOUS_COMMIT ?: sh(returnStdout: true, script: 'git rev-parse HEAD~1').trim()
-        def changes = sh(returnStdout: true, script: "git diff --name-only ${previousCommit} ${commit}").trim()
-        return changes.tokenize('\n').any { it.startsWith(path) }
+        changedFiles = sh(returnStdout: true, script: "git diff --name-only ${previousCommit} ${commit}").trim()
     }
+
+    return changedFiles.split('\n').any { it.startsWith(path) }
 }
