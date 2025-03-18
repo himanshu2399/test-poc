@@ -4,4 +4,4 @@ global:
   feature_flags:
     new_ui: true
     beta_mode: false
-    id: "test-id"
+    
